@@ -2,10 +2,6 @@ import re
 import requests
 import time
 from bs4 import BeautifulSoup
-from http.cookiejar import CookieJar
-import json
-import pandas as pd
-import csv
 
 ebay_url = "https://www.ebay.co.uk/sch/i.html?_nkw=" # static
 
@@ -32,7 +28,7 @@ class eBay_request(): # finished
 
     def collect(self):
         counter = 0
-        while counter <5: # get five most recent results
+        while counter <10: # get ten most recent results
             entry_key = 'e' + str((counter+1))
             temp_price = self.body.findAll("span", {"class" : "bold bidsold"})
             self.trans_price = temp_price[counter].getText()
